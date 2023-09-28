@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript / AJAX Programming</title>
+  <!-- Bootstrap link -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  <!-- Bootstrap script -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+
+<style>
+  form {
+    position: relative;
+    width: 400px;
+    margin: 20px auto 60px;
+  }
+
+  .example {
+    position: relative;
+    width: 400px;
+    margin: 0 auto;
+  }
+</style>
+
+</head>
+
+<body>
+
+   <main class="overflow-hidden">
+      <h3 class="text-center my-5">Recursion Basic</h3>
+      
+      
+      <!-- show image -->
+      <button type="button" class="btn btn-primary vstack mx-auto rounded-1" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        show image
+      </button>
+      
+      <!-- Modal -->
+      <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Recusion Function</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <img src="./img.png" style="width: 100%;" alt="img">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+      
+  
+      <!-- input -->
+        <form class="border p-3">
+    
+          <label for="num" class="ms-5">Insert Number</label><br>
+          <input type="number" class="ms-5 mb-3 p-2 rounded2" id="num"><br>
+        
+          <div class="d-flex justify-content-evenly mt-3">
+            <button class="btn btn-primary rounded-1 px-4" id="btn">
+              Submit
+            </button>
+            <button class="btn btn-danger rounded-1 px-4" id="reset">
+              Reset
+            </button>
+          </div>
+      
+        </form>
+        
+        <div class="mt-2 text-danger lead text-center fw-bold" id="alerto">
+        </div>
+        <p class="text-center">see console.log()</p>
+      
+      
+    
+      
+      
+      
+      <div class="example border p-2 border-3 rounded-2">
+       <p id="output"></p>
+      </div>
+   </main>
+
+  <script>
+
+   const btn = document.getElementById('btn')
+   const number = document.getElementById('num')
+   const reset = document.getElementById('reset')
+   const alerto = document.getElementById('alerto')
+   const output = document.getElementById('output')
+
+
+/* 
+    let number = 2
+    let call = 0
+
+    const recFunc = (num) => {
+      if (num === 0) {
+        console.log('zero!')
+      } else {
+         call++
+         console.log('function is calling: ' + call + ' time')
+       
+         if(num > 20) {
+          return console.log('end')
+         } else {
+            recFunc(num + 1)
+         }
+       
+       
+      }
+    }
+
+   const x = recFunc(number) */
+   //console.log(x)
+
+
+   const fact = (n) => {
+    if(n === 0) {
+      return 1
+    } else {
+      console.log('num = ' + n)
+      output.textContent += n + ' '
+      const x = n * fact(n - 1)
+      console.log(x)
+      output.textContent += x + ' '
+
+      return x 
+    }
+   }
+
+
+   btn.addEventListener('click', e => {
+    e.preventDefault()
+
+    const num = number.value
+     if (num === '' || num < 0) {
+        return alert('insert positive num')
+     }
+
+    const res = fact(num)
+
+   
+    output.textContent += 'Final Result: ' + res + ''
+   
+   })
+
+
+   reset.addEventListener('click', e => {
+    e.preventDefault()
+
+    number.value = ''
+    output.textContent = ''
+   
+   })
+
+
+   
+
+  </script>
+
+
+</body>
+
+</html>
